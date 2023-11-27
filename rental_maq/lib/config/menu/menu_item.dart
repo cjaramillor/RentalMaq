@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+
 class MenuItem {
   final String title;
   final String subtitle;
   final String link;
-  final String icon;
+  final IconData icon;
 
   const MenuItem(
       {required this.title,
@@ -12,8 +14,10 @@ class MenuItem {
 }
 
 const appMenuItem = <MenuItem>[
-  MenuItem(title: 'Inicio', subtitle: '', link: '', icon: ''),
-  MenuItem(title: 'Solicitudes', subtitle: '', link: '', icon: ''),
-  MenuItem(title: 'Chat', subtitle: '', link: '', icon: ''),
-  MenuItem(title: 'Configuracion', subtitle: '', link: '', icon: ''),
+  MenuItem(title: 'Inicio', subtitle: '', link: '', icon: Icons.home),
+  MenuItem(
+      title: 'Solicitudes', subtitle: '', link: '', icon: Icons.account_box),
+  MenuItem(title: 'Chat', subtitle: '', link: '', icon: Icons.chat),
+  MenuItem(
+      title: 'Configuracion', subtitle: '', link: '', icon: Icons.settings),
 ];
