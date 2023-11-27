@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rental_maq/config/menu/menu_item.dart';
 import 'package:rental_maq/presentation/screen/home/home_screen.dart';
 
 import 'config/theme/app_theme.dart';
@@ -16,7 +15,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selectedColor: 4).getTheme(),
-      home: Scaffold(
+      home: const Scaffold(
         body: Center(child: HomeScreen()),
       ),
     );
