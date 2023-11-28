@@ -14,10 +14,16 @@ class MenuItem {
 }
 
 const appMenuItem = <MenuItem>[
-  MenuItem(title: 'Inicio', subtitle: '', link: '', icon: Icons.home),
+  MenuItem(title: 'Inicio', subtitle: '', link: '/home', icon: Icons.home),
   MenuItem(
-      title: 'Solicitudes', subtitle: '', link: '', icon: Icons.account_box),
-  MenuItem(title: 'Chat', subtitle: '', link: '', icon: Icons.chat),
+      title: 'Solicitudes',
+      subtitle: '',
+      link: '/request',
+      icon: Icons.account_box),
+  MenuItem(title: 'Chat', subtitle: '', link: '/chat', icon: Icons.chat),
   MenuItem(
-      title: 'Configuracion', subtitle: '', link: '', icon: Icons.settings),
+      title: 'Configuracion',
+      subtitle: '',
+      link: '/setting',
+      icon: Icons.settings),
 ];

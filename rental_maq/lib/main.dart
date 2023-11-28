@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rental_maq/presentation/screen/home/home_screen.dart';
+import 'package:rental_maq/config/Router/app_router.dart';
 
 import 'config/theme/app_theme.dart';
 
@@ -12,12 +12,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectedColor: 4).getTheme(),
-      home: const Scaffold(
-        body: Center(child: HomeScreen()),
-      ),
+      theme: AppTheme(selectedColor: 0).getTheme(),
     );
   }
 }
