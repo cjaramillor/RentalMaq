@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
+  static const String name = 'Chat';
   const ChatScreen({super.key});
 
   @override
