@@ -33,26 +33,59 @@ class ButtonTest extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: Wrap(
         children: [
-          TextFormField(),
-          TextFormField(
-            maxLength: 10,
-            obscureText: false,
-          ),
           ElevatedButton(
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('You clicked ElevatedButton.')));
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('mensaje enviado a ${"nombre"}.')));
             },
-            child: const Text('Iniciar Sesión'),
+            child: const Text('Ver calendario'),
           ),
-          FilledButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('You clicked FilledButton.')));
-              },
-              child: const Text('Enabled')),
         ],
       ),
     );
   }
+}
+
+class ButtonTest2 extends StatelessWidget {
+  const ButtonTest2({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      child: Wrap(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('mensaje enviado a ${"nombre"}.')));
+            },
+            child: const Text('Enviar mensaje'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ButtonDatePickerWidget extends StatelessWidget {
+  final String text;
+  final VoidCallback onClicked;
+
+  const ButtonDatePickerWidget({
+    super.key,
+    required this.text,
+    required this.onClicked,
+  });
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton(
+        onPressed: onClicked,
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 20, color: Colors.black),
+        ),
+      );
 }

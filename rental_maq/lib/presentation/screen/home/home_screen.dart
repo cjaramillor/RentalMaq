@@ -1,6 +1,10 @@
+import 'dart:typed_data';
+
+import 'package:currency_formatter/currency_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rental_maq/config/model/publish/public_item.dart';
+import 'package:rental_maq/presentation/screen/publish_detail/details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String name = 'Home';
@@ -25,6 +29,14 @@ class ListPublished extends StatelessWidget {
     required this.listRandom,
   });
 
+  final CurrencyFormat clpSettings = const CurrencyFormat(
+    code: 'clp',
+    symbol: "\$",
+    symbolSide: SymbolSide.left,
+    thousandSeparator: '.',
+    decimalSeparator: ',',
+    symbolSeparator: ' ',
+  );
   final List<PublishItem> listRandom;
 
   @override
@@ -32,17 +44,43 @@ class ListPublished extends StatelessWidget {
     return ListView.builder(
         itemCount: listRandom.length,
         itemBuilder: (context, index) {
+          final UriData? data = Uri.parse(listRandom[index].url).data;
+          final Uint8List myImage = data!.contentAsBytes();
+
           return Card(
+              child: InkWell(
+            onTap: () {
+              context.pushNamed(DetailsScreen.name, extra: listRandom[index]);
+            },
             child: Column(
               children: <Widget>[
-                Title(
-                    color: Colors.blue, child: Text(listRandom[index].author)),
-                Text(
-                    textAlign: TextAlign.right,
-                    listRandom[index].value.toString())
+                Row(
+                  children: [
+                    Title(
+                        color: Colors.blue,
+                        child: Text(listRandom[index].title)),
+                    const Spacer(),
+                    Text(
+                        textAlign: TextAlign.left,
+                        "${CurrencyFormatter.format(listRandom[index].value, clpSettings)} / ${listRandom[index].rentalType}"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: SizedBox(
+                        height: 120,
+                        width: 170,
+                        child: Image.memory(
+                            cacheHeight: 120, cacheWidth: 170, myImage),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
-          );
+          ));
         });
   }
 }

@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:rental_maq/config/model/publish/public_item.dart';
 import 'package:rental_maq/presentation/screen/login/login_screen.dart';
+import 'package:rental_maq/presentation/screen/publish_detail/details_screen.dart';
 import 'package:rental_maq/presentation/screen/screens.dart';
 
 // GoRouter configuration
@@ -30,6 +32,14 @@ final appRouter = GoRouter(
       name: LoginScreen.name,
       path: '/login',
       builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      name: DetailsScreen.name,
+      path: '/detailsItem',
+      builder: (context, state) {
+        PublishItem item = state.extra as PublishItem;
+        return DetailsScreen(itemdetail: item);
+      },
     ),
   ],
 );
